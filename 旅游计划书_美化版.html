@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>河南旅游计划书 - 贵宾来豫手册</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #ff6b6b, #ffa500);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-50px) translateY(-50px); }
+            100% { transform: translateX(50px) translateY(50px); }
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .nav-item {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .nav-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h2::before {
+            content: '🏛️';
+            font-size: 1.2em;
+        }
+
+        .section.attractions h2::before { content: '🏛️'; }
+        .section.itinerary h2::before { content: '🗓️'; }
+        .section.food h2::before { content: '🍜'; }
+        .section.accommodation h2::before { content: '🏨'; }
+        .section.transport h2::before { content: '🚗'; }
+        .section.tips h2::before { content: '💡'; }
+
+        .attraction-card {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .attraction-card h3 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .attraction-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -22px;
+            top: 20px;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        .timeline-item h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .food-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .food-item h4 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .tip-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .tip-item h4 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>河南旅游计划书</h1>
+            <p>贵宾来豫手册 - 探索中原文化的魅力之旅</p>
+        </header>
+
+        <nav class="nav">
+            <a href="#overview" class="nav-item">行程概览</a>
+            <a href="#attractions" class="nav-item">景点介绍</a>
+            <a href="#itinerary" class="nav-item">详细行程</a>
+            <a href="#food" class="nav-item">美食推荐</a>
+            <a href="#accommodation" class="nav-item">住宿安排</a>
+            <a href="#transport" class="nav-item">交通指南</a>
+            <a href="#tips" class="nav-item">实用贴士</a>
+        </nav>
+
+        <section id="overview" class="section">
+            <h2>行程概览</h2>
+            <p>河南，作为中华文明的发源地，拥有丰富的历史文化遗产和自然风光。本次旅游计划将带您深度体验中原文化的独特魅力，从古都洛阳到少林寺，从龙门石窟到云台山，感受千年文明的厚重底蕴。</p>
+            <div style="background: white; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                <h3 style="color: #667eea; margin-bottom: 15px;">行程亮点</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin: 10px 0; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #ff6b6b;">🏛️</span>
+                        探访世界文化遗产龙门石窟
+                    </li>
+                    <li style="margin: 10px 0; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #ff6b6b;">🥋</span>
+                        体验少林功夫文化
+                    </li>
+                    <li style="margin: 10px 0; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #ff6b6b;">🏔️</span>
+                        欣赏云台山自然风光
+                    </li>
+                    <li style="margin: 10px 0; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #ff6b6b;">🍜</span>
+                        品尝正宗河南美食
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="attractions" class="section attractions">
+            <h2>主要景点介绍</h2>
+            
+            <div class="attraction-card">
+                <h3>龙门石窟</h3>
+                <p>龙门石窟是中国石刻艺术的宝库，与莫高窟、云冈石窟并称中国三大石窟。这里保存着从北魏到唐代的10万余尊佛像，展现了古代雕刻艺术的精湛技艺。主要景点包括奉先寺、万佛洞、莲花洞等。</p>
+            </div>
+
+            <div class="attraction-card">
+                <h3>少林寺</h3>
+                <p>少林寺是禅宗祖庭，也是中国功夫的发源地。这里不仅有深厚的佛教文化底蕴，还有闻名世界的少林功夫。游客可以观看武术表演，体验禅修文化，感受"天下功夫出少林"的魅力。</p>
+            </div>
+
+            <div class="attraction-card">
+                <h3>云台山</h3>
+                <p>云台山以独特的丹霞地貌和丰富的地质景观著称，是国家级风景名胜区。主要景点包括红石峡、潭瀑峡、茱萸峰等，山水相映，景色秀美，是摄影爱好者的天堂。</p>
+            </div>
+
+            <div class="attraction-card">
+                <h3>白马寺</h3>
+                <p>白马寺是中国第一座官办佛教寺院，有"中国佛教祖庭"之称。寺内保存着珍贵的佛教文物和建筑，是了解中国佛教发展历史的重要场所。</p>
+            </div>
+        </section>
+
+        <section id="itinerary" class="section itinerary">
+            <h2>详细行程安排</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>第一天：抵达洛阳</h4>
+                    <p><strong>上午：</strong>抵达洛阳，入住酒店，稍作休息</p>
+                    <p><strong>下午：</strong>游览洛阳博物馆，了解洛阳历史文化</p>
+                    <p><strong>晚上：</strong>品尝洛阳水席，体验当地美食文化</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>第二天：龙门石窟一日游</h4>
+                    <p><strong>上午：</strong>游览龙门石窟，欣赏石刻艺术</p>
+                    <p><strong>下午：</strong>参观白园，了解白居易文化</p>
+                    <p><strong>晚上：</strong>夜游洛邑古城，感受古都夜景</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>第三天：少林寺文化体验</h4>
+                    <p><strong>上午：</strong>前往登封，游览少林寺</p>
+                    <p><strong>下午：</strong>观看少林功夫表演，体验禅修</p>
+                    <p><strong>晚上：</strong>入住登封，品尝当地特色菜</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>第四天：云台山自然风光</h4>
+                    <p><strong>上午：</strong>前往焦作，游览云台山红石峡</p>
+                    <p><strong>下午：</strong>游览潭瀑峡，欣赏山水美景</p>
+                    <p><strong>晚上：</strong>返回洛阳，自由活动</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>第五天：白马寺与返程</h4>
+                    <p><strong>上午：</strong>游览白马寺，感受佛教文化</p>
+                    <p><strong>下午：</strong>购买特产，准备返程</p>
+                    <p><strong>晚上：</strong>结束愉快的河南之旅</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="food" class="section food">
+            <h2>美食推荐</h2>
+            <p>河南美食以面食为主，口味偏重，具有浓郁的地方特色。以下是必尝的河南美食：</p>
+            
+            <div class="food-grid">
+                <div class="food-item">
+                    <h4>🍜 洛阳水席</h4>
+                    <p>洛阳水席是洛阳的传统名宴，以汤水为主，菜品丰富，口味独特。代表菜品有牡丹燕菜、连汤肉片等。</p>
+                </div>
+
+                <div class="food-item">
+                    <h4>🥟 开封灌汤包</h4>
+                    <p>开封灌汤包皮薄馅大，汤汁丰富，是开封的传统名点。吃时先咬一小口，吸出汤汁，再品尝包子。</p>
+                </div>
+
+                <div class="food-item">
+                    <h4>🍲 胡辣汤</h4>
+                    <p>胡辣汤是河南的传统早餐，以胡椒和辣椒为主要调料，配以各种食材，味道浓郁，营养丰富。</p>
+                </div>
+
+                <div class="food-item">
+                    <h4>🍜 烩面</h4>
+                    <p>河南烩面是河南的传统面食，面条筋道，汤味鲜美，配菜丰富，是河南人最喜爱的面食之一。</p>
+                </div>
+
+                <div class="food-item">
+                    <h4>🥮 道口烧鸡</h4>
+                    <p>道口烧鸡是河南的传统名菜，选用优质土鸡，经过特殊工艺制作，肉质鲜嫩，香味浓郁。</p>
+                </div>
+
+                <div class="food-item">
+                    <h4>🍯 花生糕</h4>
+                    <p>花生糕是河南的传统糕点，以花生为主要原料，口感香甜，是很好的伴手礼选择。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="accommodation" class="section accommodation">
+            <h2>住宿安排</h2>
+            <p>我们为您精心挑选了舒适的住宿环境，确保您在旅途中得到充分的休息：</p>
+            
+            <div style="background: white; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                <h3 style="color: #667eea; margin-bottom: 15px;">推荐酒店</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div style="padding: 15px; border: 1px solid #eee; border-radius: 8px;">
+                        <h4 style="color: #ff6b6b; margin-bottom: 10px;">洛阳 - 华美达酒店</h4>
+                        <p>位于洛阳市中心，交通便利，设施完善，服务优质。</p>
+                    </div>
+                    <div style="padding: 15px; border: 1px solid #eee; border-radius: 8px;">
+                        <h4 style="color: #ff6b6b; margin-bottom: 10px;">登封 - 少林国际酒店</h4>
+                        <p>靠近少林寺，环境清幽，是体验禅文化的理想选择。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="transport" class="section transport">
+            <h2>交通指南</h2>
+            <p>河南交通便利，有多种交通方式可供选择：</p>
+            
+            <div style="background: white; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                <h3 style="color: #667eea; margin-bottom: 15px;">交通方式</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin: 15px 0; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #667eea;">
+                        <strong>✈️ 飞机：</strong>洛阳北郊机场有多个航班连接国内主要城市
+                    </li>
+                    <li style="margin: 15px 0; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #667eea;">
+                        <strong>🚄 高铁：</strong>洛阳龙门站是重要的高铁枢纽，连接全国各地
+                    </li>
+                    <li style="margin: 15px 0; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #667eea;">
+                        <strong>🚗 自驾：</strong>河南高速公路网络发达，自驾游非常便利
+                    </li>
+                    <li style="margin: 15px 0; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #667eea;">
+                        <strong>🚌 旅游大巴：</strong>各景点间有专门的旅游大巴连接
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="tips" class="section tips">
+            <h2>实用贴士</h2>
+            <p>为了让您的河南之旅更加愉快，请注意以下事项：</p>
+            
+            <div class="tips-grid">
+                <div class="tip-item">
+                    <h4>🌡️ 气候提醒</h4>
+                    <p>河南四季分明，春秋两季气候宜人，夏季较热，冬季较冷。请根据季节准备合适的衣物。</p>
+                </div>
+
+                <div class="tip-item">
+                    <h4>💰 消费水平</h4>
+                    <p>河南消费水平相对较低，餐饮和住宿价格合理。建议准备现金和银行卡。</p>
+                </div>
+
+                <div class="tip-item">
+                    <h4>📱 通讯网络</h4>
+                    <p>河南通讯网络覆盖良好，各大景点都有4G/5G信号。建议提前下载离线地图。</p>
+                </div>
+
+                <div class="tip-item">
+                    <h4>🏥 医疗保障</h4>
+                    <p>河南医疗设施完善，各大城市都有三甲医院。建议购买旅游保险。</p>
+                </div>
+
+                <div class="tip-item">
+                    <h4>🎫 门票预订</h4>
+                    <p>热门景点建议提前网上预订门票，避免排队等待。部分景点有学生票优惠。</p>
+                </div>
+
+                <div class="tip-item">
+                    <h4>📸 拍照建议</h4>
+                    <p>河南历史文化景点众多，建议携带充电宝和存储卡。部分室内景点禁止使用闪光灯。</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <h3>联系我们</h3>
+            <p>如有任何疑问或需要帮助，请随时联系我们</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📞</span>
+                    <span>电话：400-123-4567</span>
+                </div>
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>邮箱：henan@travel.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>🌐</span>
+                    <span>网站：www.henan-travel.com</span>
+                </div>
+            </div>
+            <p style="margin-top: 20px; opacity: 0.8;">祝您河南之旅愉快！</p>
+        </footer>
+    </div>
+
+    <script>
+        // 平滑滚动导航
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 添加滚动效果
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // 初始化动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
+        });
+    </script>
+</body>
+</html>
