@@ -1,0 +1,422 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贵宾来豫婚庆手册 - 经典红色版</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: linear-gradient(135deg, #8B0000 0%, #DC143C 50%, #B22222 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 40px rgba(139, 0, 0, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="red-pattern" width="30" height="30" patternUnits="userSpaceOnUse"><text x="15" y="20" text-anchor="middle" fill="rgba(255,255,255,0.1)" font-size="16">囍</text></pattern></defs><rect width="100" height="100" fill="url(%23red-pattern)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header h1 {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+        }
+        
+        .header .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+        .header .wedding-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .wedding-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 20px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .wedding-item i {
+            font-size: 1.2rem;
+        }
+        .nav {
+            background: #8B0000;
+            padding: 20px 30px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            background: #DC143C;
+            transform: translateY(-2px);
+        }
+        
+        .content {
+            padding: 30px;
+            background: #FFF8F8;
+        }
+        
+        .section { display: none; }
+        .section.active { display: block; }
+        
+        .day-card {
+            background: white;
+            border: 3px solid #8B0000;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.2);
+        }
+        
+        .day-header {
+            background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .day-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .day-info h2 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .day-content {
+            padding: 30px;
+            background: #FFF8F8;
+        }
+        
+        .schedule-item {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #FFF0F0;
+            border-radius: 10px;
+            border-left: 5px solid #DC143C;
+        }
+        
+        .item-title {
+            font-weight: 600;
+            color: #8B0000;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .notes {
+            background: #FFF8DC;
+            border: 2px solid #FFD700;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .notes h4 {
+            color: #B8860B;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .container { margin: 0; border-radius: 0; }
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 2.5rem; }
+            .nav { padding: 15px 20px; flex-direction: column; }
+            .content { padding: 20px; }
+            .day-header { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>贵宾来豫手册</h1>
+                <div class="wedding-info">
+                    <div class="wedding-item">
+                        <i class="fas fa-heart"></i>
+                        <span>喜庆婚礼</span>
+                    </div>
+                    <div class="wedding-item">
+                        <i class="fas fa-ring"></i>
+                        <span>幸福之旅</span>
+                    </div>
+                    <div class="wedding-item">
+                        <i class="fas fa-camera"></i>
+                        <span>美好回忆</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="nav" id="nav"></div>
+        <div class="content" id="content"></div>
+    </div>
+    
+    <script>
+        const data = {            "贵宾来豫接待手册": {
+                "name": "贵宾来豫接待手册",
+                "headers": ['日期', '日程', '具体安排', '备注'],
+                "rows": [
+                    ['10月02日', '迎宾', '一、接站\n（一）\t谢正义、谢焜翔：飞机11:45抵达新郑机场T2航站楼（深航ZH9727）。谢家寿、谢正敏、刘家仁，飞机12:50抵达新郑机场T2航站楼（南航CZ8219）。\n豫州行：已预订8座车包车，12:50飞机落地后联系司机（机场上车点：T2航站楼出发厅4层，即停即走），刘玉杰约14:30从郑州市地铁1号线体育中心站B地铁口上同一辆车（约3小时车程，预计16:30-17:00到达长垣滨河酒店）。\n（二）刘重芝（济南长途汽车总站⇔长垣汽车总站，13:30-18:00），到站后开车去接（手机号：19563497082）。\n二、晚餐\n约18:30，食博园满天星饭店207（已预订烤鸭）。\n三、住宿 【长垣滨河酒店】\n谢家寿、刘重芝\t标间（10月2日-10月3日）\n谢正义、谢焜翔\t标间（10月2日-10月3日）\n刘玉杰\t单间（10月2日-10月3日）\n刘家仁、谢正敏\t大床房（10月2日-10月3日）\n刘玉婷\t大床房（房间号：426，10月2日）', '1.\t航班号和联系人（谢正义）手机号已告知包车调度人，包车司机电话和车牌号确定需提前一天得知后告知贵宾。\n2.\t贵宾住宿事宜由李硕负责，联系方式16668088494。\n3.\t酒店内备有水果、矿泉水、小零食等生活物资，按需自取。'],
+                    ['10月03日', '举行婚礼', '早餐：滨河酒店一楼，自助餐。\n\n午餐：滨河酒店二楼，婚礼正餐。\n\n17:30晚餐：滨河酒店味道坊，大厅。', '婚礼结束后有时间到婚房坐坐。'],
+                    ['10月04日上午', '游玩长垣', '早餐：鸡汁豆腐脑（蒲城商业中心店）。\n\n观光黄河马寨浮桥生态区。\n\n12:00\t午餐：西西饭店212。\n\n13:30\t豫州行车辆到西西饭店接贵宾。', '1.早上起床后，贵宾办理滨河酒店退房，将行李转存到车上。\n2.三辆车保障出行（车牌号：豫GK8E31、沪AC88179、豫州行待确定），玉婷和贵宾坐豫州行8座车。'],
+                    ['10月04日下午', '游玩开封府（日场开放时间：7:30-19:00）', '13:30\t两辆自家车+一辆豫州行出发开封住宿点（75公里，1个半小时车程）\n住宿点一：贵宾方住址，开封市龙亭区翠庭尚都9号楼1单元（距清明上河园迎宾门2&#46;5公里，驾车10分钟）。\n住宿点二：长垣方住址，开封市龙亭区九鼎雅园15号楼2层201（距清明上河园迎宾门800米，步行10分钟）。\n入住民宿后打车前往开封府（相距4&#46;5公里），游玩2小时（16:00-18:00）。\n18:30\t晚餐\t宋园灌汤小笼包（五一路店），房间：【轻舟】，3&#46;5公里。\n晚餐后打车回民宿休息（距贵宾方住址4&#46;5公里；距长垣方住址6公里）。', ''],
+                    ['10月05日', '全天游玩清明上河园（开放时间：9:00-22:00）', '李硕增负责贵宾方早餐安排（张德阳胡辣汤梁苑店，民宿楼下）；李硕负责长垣方早餐安排。\n8:45左右\t清明上河园迎宾门会合。\n9:00\t观看包公迎宾后，由孙羊正店酒店工作人员带领从VIP通道入园游玩。\n12:00\t午餐\t清明上河园内“美食城”简餐。\n17:00\t晚餐\t孙羊正店（清明上河园内），房间：【政和厅】。\n晚餐后继续游玩，21:00从清明上河园端门出园，（距贵宾方住址1.2公里；距长垣方住址600米），返回民宿休息。\n（清园必看八大经典实景演出：包公迎宾+包公巡案+包公巡视汴河漕运、岳飞·郾城大捷、岳飞枪挑小梁王、大宋·东京保卫战、打铁花之盛世大宋、宋廷梦乐、国风大巡游、王员外招婿。）', '国庆门票，清园门票单次单日有效。'],
+                    ['10月06日', '贵宾返程', '李硕增负责贵宾方早餐安排（陈记百年驴肉汤金耀路店，步行630米）；李硕负责长垣方早餐安排。\n\t早餐后，休整。送贵宾。\n（一）开封站——新郑机场（城际高铁：1小时车程）\n谢正义、谢焜翔：13:25-15:40，郑州新郑T2⇔沈阳桃仙T3\n谢家寿、谢正敏、刘家仁：13:50-16:15，郑州新郑T2⇔贵阳龙洞堡T3\n（二）开封站——郑州东站（城际高铁：30分钟车程）\n刘重芝、刘玉杰从开封站坐城际高铁到郑州东站，之后刘重芝同站换乘高铁至济南，刘玉杰乘地铁返回郑大。', '上午10:00前到开封站，11:30前到机场（开封站距民宿6公里，驾车20分钟）'],
+                ]
+            },
+            "贵宾来豫安排时刻表": {
+                "name": "贵宾来豫安排时刻表",
+                "headers": ['日期', '大概时间点', '关键事项'],
+                "rows": [
+                    ['10月2日', '12:00-18:00', '彩排（具体时间提前一周跟主持人确定）+布置酒店婚房'],
+                    ['', '13:30:00', '城际快线：新郑机场T2航站楼接机5位贵宾（约3小时车程）'],
+                    ['', '14:30:00', '刘玉杰从郑州市地铁1号线体育中心站B地铁口上同一辆车'],
+                    ['', '16:30-17:00', '6位贵宾到达滨河酒店入住'],
+                    ['', '18:00:00', '长垣汽车总站接刘重芝'],
+                    ['', '18:30-20:00', '满天星饭店207吃晚餐（已预订烤鸭）'],
+                    ['', '20:00:00', '晚餐后休息'],
+                    ['10月3日', '7:00-8:00', '早餐：滨河酒店一楼，自助餐'],
+                    ['', '8:00-12:00', '参与婚礼事务'],
+                    ['', '12:00:00', '午餐：滨河酒店二楼，婚礼正餐'],
+                    ['', '15:00:00', '婚礼结束后休息2小时'],
+                    ['', '17:30-19:00', '晚餐：滨河酒店味道坊，大厅'],
+                    ['', '19:00:00', '晚餐后到婚房坐坐，聊聊天'],
+                    ['', '20:00:00', '各自休息'],
+                    ['10月4日', '07:30:00', '贵宾退房，把行李放到车上'],
+                    ['', '08:00:00', '早餐：鸡汁豆腐脑（蒲城商业中心店）'],
+                    ['', '08:30:00', '出发老家'],
+                    ['', '9:30-11:00', '观光黄河马寨浮桥生态区'],
+                    ['', '12:00-13:30', '午餐：西西饭店212'],
+                    ['', '13:30:00', '两辆自家车+一辆豫州行车辆出发开封住宿点（相距75公里，1.5小时车程）'],
+                    ['', '', '住宿点一：贵宾方住址，开封市龙亭区翠庭尚都9号楼1单元'],
+                    ['', '', '住宿点二：长垣方住址，开封市龙亭区九鼎雅园15号楼2层201'],
+                    ['', '', '住宿点一和住宿点二相距2公里，驾车8分钟。'],
+                    ['', '15:00:00', '入住民宿'],
+                    ['', '15:30:00', '打车前往开封府（距两住宿点4.5公里）'],
+                    ['', '16:00-18:00', '游玩开封府（日场开放时间：7:30-19:00）'],
+                    ['', '18:00:00', '打车前往宋园灌汤小笼包（五一路店），距开封府3.5公里'],
+                    ['', '18:30-20:00', '晚餐：宋园灌汤小笼包，房间：【轻舟】'],
+                    ['', '20:00:00', '打车回民宿休息（距贵宾方住址4.5公里；距长垣方住址6公里）'],
+                    ['10月5日', '08:00:00', '早餐'],
+                    ['', '08:45:00', '清明上河园迎宾门会合（距贵宾方住址2.5公里，驾车10分钟；距长垣方住址800米，步行10分钟）'],
+                    ['', '09:00:00', '观看包公迎宾后，由“孙羊正店”工作人员带领从VIP通道入园'],
+                    ['', '9:00-11:30', '根据当天节目单看表演（开放时间：9:00-22:00）'],
+                    ['', '12:00:00', '午餐：清明上河园内“美食城”简餐'],
+                    ['', '13:00-16:30', '继续看表演，累了在园内找座休息'],
+                    ['', '17:00:00', '晚餐：孙羊正店（清明上河园内），房间：【政和厅】'],
+                    ['', '18:30-21:00', '继续看表演'],
+                    ['', '21:00:00', '从端门出园（距贵宾方住址1.2公里；距长垣方住址600米），'],
+                    ['', '', '返回民宿休息。'],
+                    ['10月6日', '08:00:00', '早餐'],
+                    ['', '08:30:00', '两辆车把贵宾送至开封站（距贵宾方住址6公里，驾车20分钟）；返回民宿接上其他人回长垣。'],
+                ]
+            },
+        };
+        
+        const icons = {
+            '迎宾': 'fas fa-plane-arrival',
+            '婚礼': 'fas fa-heart',
+            '游览': 'fas fa-camera',
+            '送别': 'fas fa-plane-departure'
+        };
+        
+        function getIcon(text) {
+            if (!text) return 'fas fa-heart';
+            for (const [key, icon] of Object.entries(icons)) {
+                if (text.includes(key)) return icon;
+            }
+            return 'fas fa-heart';
+        }
+        
+        function generateNav() {
+            const nav = document.getElementById('nav');
+            const sections = Object.keys(data);
+            nav.innerHTML = sections.map((key, index) => {
+                const section = data[key];
+                const isActive = index === 0 ? 'active' : '';
+                return `<a class="nav-item ${isActive}" onclick="showSection('${key}')">囍 ${section.name}</a>`;
+            }).join('');
+        }
+        
+        function generateContent() {
+            const content = document.getElementById('content');
+            const sections = Object.keys(data);
+            content.innerHTML = sections.map((key, index) => {
+                const section = data[key];
+                const isActive = index === 0 ? 'active' : '';
+                return `<div class="section ${isActive}" id="section-${key}">${generateSectionContent(section)}</div>`;
+            }).join('');
+        }
+        
+        function generateSectionContent(section) {
+            if (section.rows.length === 0) return '<div style="text-align: center; padding: 40px; color: #8B0000;">囍 暂无数据 囍</div>';
+            
+            const hasDateColumn = section.headers.some(h => h && h.includes('日期'));
+            const hasScheduleColumn = section.headers.some(h => h && h.includes('日程'));
+            
+            if (hasDateColumn && hasScheduleColumn) {
+                return generateScheduleContent(section);
+            } else {
+                return generateTableContent(section);
+            }
+        }
+        
+        function generateScheduleContent(section) {
+            const dateIndex = section.headers.findIndex(h => h && h.includes('日期'));
+            const scheduleIndex = section.headers.findIndex(h => h && h.includes('日程'));
+            const detailsIndex = section.headers.findIndex(h => h && (h.includes('安排') || h.includes('具体')));
+            const notesIndex = section.headers.findIndex(h => h && h.includes('备注'));
+            
+            const dateGroups = {};
+            section.rows.forEach(row => {
+                const date = row[dateIndex];
+                if (date) {
+                    if (!dateGroups[date]) dateGroups[date] = [];
+                    dateGroups[date].push(row);
+                }
+            });
+            
+            return Object.keys(dateGroups).map(date => {
+                const dayRows = dateGroups[date];
+                const firstRow = dayRows[0];
+                const schedule = firstRow[scheduleIndex] || '';
+                const details = firstRow[detailsIndex] || '';
+                const notes = firstRow[notesIndex] || '';
+                const icon = getIcon(schedule);
+                
+                return `
+                    <div class="day-card">
+                        <div class="day-header">
+                            <div class="day-icon"><i class="${icon}"></i></div>
+                            <div class="day-info">
+                                <h2>囍 ${date} 囍</h2>
+                                <div class="schedule">${schedule}</div>
+                            </div>
+                        </div>
+                        <div class="day-content">
+                            <div class="schedule-item">
+                                <div class="item-title">详细安排</div>
+                                <div class="item-content">${formatText(details)}</div>
+                            </div>
+                            ${notes ? `<div class="notes"><h4>重要提醒</h4><p>${formatText(notes)}</p></div>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        function generateTableContent(section) {
+            return `<div style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(139, 0, 0, 0.1);">
+                <div style="background: #8B0000; color: white; padding: 20px; text-align: center; font-size: 1.2rem; font-weight: 600;">囍 ${section.name} 囍</div>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #FFF0F0;">
+                                ${section.headers.map(header => `<th style="padding: 15px; text-align: left; font-weight: 600; color: #8B0000; border-bottom: 2px solid #DC143C;">${header || '列'}</th>`).join('')}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${section.rows.map(row => `
+                                <tr style="border-bottom: 1px solid #FFF0F0;">
+                                    ${row.map(cell => `<td style="padding: 12px; vertical-align: top;">${cell === '' ? '-' : cell}</td>`).join('')}
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            </div>`;
+        }
+        
+        function formatText(text) {
+            if (!text) return '';
+            return text.replace(/\n/g, '<br>').replace(/(\d+\.)/g, '<br><strong>$1</strong>');
+        }
+        
+        function showSection(sectionKey) {
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById(`section-${sectionKey}`).classList.add('active');
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            generateNav();
+            generateContent();
+        });
+    </script>
+</body>
+</html>
